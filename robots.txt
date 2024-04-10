@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /lib/
+Disallow: /model/
+Disallow: /templates/
+Disallow: /go/
