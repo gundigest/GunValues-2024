@@ -1,10 +1,12 @@
 <?php
-
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 //Main display page for Gun Values Admin
 include("../model/config.php");
 include("../model/admin_functions.php");
+include("../includes/functions.php");
+setDefines();
+
 //These values are needed to populate the page below
 $html = $head = $breadcrumbs = $DFPTargeting = $defineAdSlots = $meta_description = "";
 $subheader = "<div class='top-spacer'></div>";

@@ -1,13 +1,21 @@
 <?php
     include("../model/config.php");
     require_once("../model/user_functions.php");
+	include("../includes/functions.php");
+	setDefines();
     //get keys
-    error_reporting(E_ALL);
-    ini_set('display_errors', '1');
+    if(__DEBUG__){
+		error_reporting(E_ALL);
+		ini_set('display_errors', '1');
+	}
 
 //Get recurring ID
 	$user = array();	
-        $user[] = array('user_id' => 20468,'recurrence_id' =>1853149 );
+	
+	if(isset($_REQUEST['user_id'])&&isset($_REQUEST['recur_id'])){
+		$return = $_SERVER['HTTP_REFERER'];
+		$user[] = array('user_id' => (int)$_REQUEST['user_id'],'recurrence_id' =>(int)$_REQUEST['recur_id'] );
+	}
 
 
 
@@ -35,7 +43,12 @@ global $payment_pw;
         //execute session
         $token_json = curl_exec($ch);
         $exchange_token = json_decode($token_json,true);
-		$token = $exchange_token['access_token'];
+		if(!isset($exchange_token['access_token'])){
+			 header("Location: $return");
+			 die();
+	 	}
+        $token = $exchange_token['access_token'];
+		
         //close session
         curl_close($ch);
 
@@ -78,4 +91,8 @@ global $payment_pw;
 	updatePlanStatus($u['user_id'],"cancelled");*/
  }
 
+ if($return){
+	 header("Location: $return");
+	 die();
+ }
 ?>

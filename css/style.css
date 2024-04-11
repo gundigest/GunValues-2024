@@ -1875,3 +1875,4 @@ table.admin tr:nth-child(even) {
 table.admin tr:nth-child(odd) {
     background-color: #eee;
 }
+.small{font-size:80%}

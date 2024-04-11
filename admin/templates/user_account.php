@@ -68,6 +68,7 @@ EOD;
 $html .= <<<EOD
 		<table class="admin">
 			<thead>
+			<td></td>
 			<td>Payments ID</td>	
 			<td>Date</td>	
 			<td>Status</td>
@@ -84,8 +85,13 @@ EOD;
 					//No refund button, this one has already been refunded
 					$refund_button = false;
 				}
+				
 				$tally += $pay['amount'];
 				$html .= "<tr>";
+				$html .= "<td>";
+					if(strlen($pay['payment_id'])>5)
+						$html .= "<a class='small' href='/sandbox/manual_cancel_process.php?user_id=".$user_id."&recur_id=".$pay['payment_id']."'>(Cancel PT)</a>";
+				$html .= "</td>";
 				$html .= "<td>" . $pay['payment_id']. "</td>";
 				$html .= "<td>" . $pay['timestamp']. "</td>";
 				$html .= "<td>" . $pay['status'] . "</td>";			
