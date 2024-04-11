@@ -1,6 +1,9 @@
 <?php
 //Main display page for Gun Values
 include("model/config.php");
+include("includes/functions.php");
+setDefines();
+
 //These values are needed to populate the page below
 $html = $head = $breadcrumbs = $DFPTargeting = $defineAdSlots = $meta_description = "";
 $subheader = "<div class='top-spacer'></div>";

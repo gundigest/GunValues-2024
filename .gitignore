@@ -5,4 +5,3 @@ archive/*
 /images/user_uploads/
 /images/user_uploads/*
 model/config.php
-.htaccess
