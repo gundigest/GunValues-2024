@@ -55,6 +55,15 @@ EOD;
 				
 			$html .= date("M d, Y h:i A",strtotime($expiration));
 		}		
+		$html .= '<p>Last Update: ';
+		if($plan['updated'])
+			$html .= date("M d, Y h:i A",strtotime($plan['updated']));
+		elseif($plan['timestamp'])
+			$html .= date("M d, Y h:i A",strtotime($plan['timestamp']));
+		else
+			$html .= 'N/A';
+		$html .= '</p>';
+			
 	}	
 	$html .= "</div><div class='two-third-page'>";
 		if(($plan) && ($plan['status']!="expiring")&& ($plan['status']!="cancelled")){

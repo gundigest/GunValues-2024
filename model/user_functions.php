@@ -656,7 +656,7 @@ function getPlan($user_id){
 	global $db;
 	try
        {
-		$stmt = $db->prepare("SELECT p.name,p.amount,.p.frequency,s.status FROM `user` u JOIN `user_subscription` s ON u.id  = s.user_id JOIN `subscription` p ON p.id = s.plan_id WHERE u.id = :id ORDER BY s.timestamp DESC LIMIT 1");
+		$stmt = $db->prepare("SELECT p.name,p.amount,.p.frequency,s.status,s.updated,s.timestamp FROM `user` u JOIN `user_subscription` s ON u.id  = s.user_id JOIN `subscription` p ON p.id = s.plan_id WHERE u.id = :id ORDER BY s.timestamp DESC LIMIT 1");
 		$stmt->bindparam(":id", $user_id);
 		$stmt->execute();
 		$count = $stmt->rowCount();
