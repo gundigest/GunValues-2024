@@ -91,7 +91,7 @@ function sendPasswordReset($username){
 }
 function sendContactForm($email,$name,$message){    
   //$recipient = "woody@gundigest.com";    
-  $recipient = "woody@gundigest.com,diane@gundigest.com,jamie@gundigest.com";    
+  $recipient = "woody@gundigest.com,jamie@gundigest.com";    
 	$content = "From: " . $name . ", " . $email . ": " . $message;
     sendEmail($recipient,"A Contact Form has been sent from Gun Values",$content);    
 	log_activity(0,"Contact Form Email Sent","Content: " . $content);
