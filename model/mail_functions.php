@@ -101,7 +101,7 @@ function sendEmail($to,$subject,$html,$from=null,$attachment=null){
 	global $_mailgun_api_url, $_maigun_api_key;
   
   if(is_null($from)){
-    $params['from']=addslashes('Gun Values by Gun Digest <sales@gundigestmedia.com>');
+    $params['from']=addslashes('Gun Values by Gun Digest <sales@email.gundigestmedia.com>');
   }else $params['from']=$from;    
 	$params['to']=$to;	
 	//$params['cc']="";	

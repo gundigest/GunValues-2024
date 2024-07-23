@@ -55,11 +55,15 @@ EOD;
 				
 			$html .= date("M d, Y h:i A",strtotime($expiration));
 		}		
-		$html .= '<p>Last Update: ';
-		if($plan['updated'])
-			$html .= date("M d, Y h:i A",strtotime($plan['updated']));
+		if($plan['status']=="cancelled"){
+			if($plan['updated']!='')
+				$html .= '<p>Cancellation Date: '.date("M d, Y h:i A",strtotime($plan['updated']));
+			else
+				$html .= '<p>Cancellation Date: Unknown';
+		}elseif($plan['updated'])
+			$html .= '<p>Last Update: '.date("M d, Y h:i A",strtotime($plan['updated']));
 		elseif($plan['timestamp'])
-			$html .= date("M d, Y h:i A",strtotime($plan['timestamp']));
+			$html .= '<p>Last Update: '.date("M d, Y h:i A",strtotime($plan['timestamp']));
 		else
 			$html .= 'N/A';
 		$html .= '</p>';
